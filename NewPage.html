@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Custodian Portal - Unified Upload</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body, html { margin:0; padding:0; font-family: Arial, sans-serif; background:#f5f5f5; }
+    .container { display:flex; min-height:100vh; }
+    
+    /* LEFT SIDEBAR - EXACT BIGSHARE STYLE */
+    .sidebar {
+        width: 220px;
+        background: linear-gradient(180deg, #0e1a3d, #1a2b5f);
+        color: white;
+        padding-top: 20px;
+        position: fixed;
+        height: 100%;
+        overflow-y: auto;
+    }
+    .sidebar h2 {
+        padding: 0 20px;
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #fff;
+    }
+    .sidebar a {
+        display: block;
+        padding: 12px 20px;
+        color: #b8c7e2;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+        background: #1e3a8a;
+        color: white;
+        padding-left: 28px;
+    }
+    .sidebar .logout {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+    }
+
+    /* MAIN CONTENT */
+    .main {
+        margin-left: 220px;
+        flex: 1;
+        background: #fff;
+    }
+    .topbar {
+        background: white;
+        padding: 10px 20px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .logo { font-weight: bold; color: #d32f2f; font-size: 20px; }
+    .user-info { font-size: 14px; color: #555; }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+        padding: 15px 30px;
+        background: #f9f9f9;
+        border-bottom: 1px solid #eee;
+        font-size: 13px;
+        color: #666;
+    }
+
+    /* PAGE CONTENT */
+    .content {
+        padding: 30px;
+    }
+    .page-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #1a2b5f;
+        margin-bottom: 10px;
+    }
+    .page-subtitle {
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    /* UPLOAD BOX - BIGSHARE STYLE */
+    .upload-section {
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .upload-row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .upload-row label {
+        font-weight: bold;
+        color: #333;
+        min-width: 120px;
+    }
+    select, input[type="file"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .btn-choose {
+        background: #e3f2fd;
+        color: #1976d2;
+        border: 1px solid #bbdefb;
+    }
+    .btn-upload {
+        background: #1976d2;
+        color: white;
+    }
+    .btn-template {
+        background: #f5f5f5;
+        color: #555;
+        border: 1px solid #ddd;
+    }
+
+    /* SUMMARY PILLS */
+    .summary-box {
+        display: flex;
+        gap: 20px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+    }
+    .summary-item {
+        background: #f8f9fa;
+        padding: 15px 25px;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+        min-width: 180px;
+        text-align: center;
+    }
+    .summary-item strong {
+        display: block;
+        font-size: 24px;
+        color: #1976d2;
+    }
+
+    /* TABLE - EXACT SAME AS ORIGINAL */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: white;
+    }
+    th {
+        background: #f5f5f5;
+        padding: 12px;
+        text-align: left;
+        border-bottom: 2px solid #ddd;
+        font-weight: bold;
+        color: #333;
+    }
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+    }
+    .status-accepted {
+        background: #e8f5e9;
+        color: #2e7d32;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 12px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+        <h2>CUSTODIAN PORTAL</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Events</a>
+        <a href="#" class="active">Vote File Upload</a>
+        <a href="#">Connected Person</a>
+        <a href="#">Documents</a>
+        <a href="#">Profile</a>
+        <div class="logout">
+            <a href="#">Logout</a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <div class="logo">iVote Bigshare Services</div>
+            <div class="user-info">Hi, Custodian Anas</div>
+        </div>
+
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb">
+            Home > Unified Custodian Upload
+        </div>
+
+        <!-- PAGE CONTENT -->
+        <div class="content">
+            <div class="page-title">Unified Custodian Upload</div>
+            <div class="page-subtitle">Single screen for Client Registration • Bulk Voting • POA Upload</div>
+
+            <!-- VOTE FILE UPLOAD SECTION -->
+            <div class="upload-section">
+                <div class="upload-row">
+                    <label>Select Event <span style="color:red;">*</span></label>
+                    <select style="width:300px;">
+                        <option>Select Event</option>
+                        <option>E123456789 - Reliance Industries AGM 2025</option>
+                        <option>E123456790 - TCS EGM 2025</option>
+                    </select>
+
+                    <label style="margin-left:40px;">Upload Document <span style="color:red;">*</span></label>
+                    <input type="file" accept=".xlsx,.csv" />
+                    <button class="btn btn-choose">Choose File</button>
+                    <button class="btn btn-upload">Upload</button>
+                    <button class="btn btn-template">Download Template</button>
+                </div>
+
+                <div style="margin-top:15px; font-size:13pz; color:#1976d2;">
+                    New Feature: Demat ID auto-conversion (8/16 → 18 digit) • Max 50,000 rows • Auto client registration
+                </div>
+            </div>
+
+            <!-- PROCESSING SUMMARY -->
+            <div class="summary-box">
+                <div class="summary-item">
+                    Total Rows<br>
+                    <strong style="color:#333;">45,320</strong>
+                </div>
+                <div class="summary-item">
+                    Accepted<br>
+                    <strong style="color:green;">44,890</strong>
+                </div>
+                <div class="summary-item">
+                    Rejected<br>
+                    <strong style="color:red;">430</strong>
+                </div>
+                <div class="summary-item">
+                    Processing Time<br>
+                    <strong>00:42 sec</strong>
+                </div>
+            </div>
+
+            <div style="margin:20px 0;">
+                <button class="btn btn-upload">Download Response File</button>
+                <button class="btn" style="background:#d32f2f;color:white;margin-left:10px;">Download Error File (430)</button>
+                <button class="btn btn-template" style="margin-left:10px;">Re-upload Rejected Rows</button>
+            </div>
+
+            <!-- POA SECTION -->
+            <div class="upload-section" style="margin-top:30px;">
+                <h3>POA / Authorization Documents (Optional – PMS Level Upload)</h3>
+                <div class="upload-row" style="margin-top:15px;">
+                    <input type="file" accept=".pdf" multiple />
+                    <button class="btn btn-choose">Choose POA Files</button>
+                    <button class="btn btn-upload">Upload POAs</button>
+                    <button class="btn btn-template">Validate All</button>
+                </div>
+
+                <table style="margin-top:20px;">
+                    <thead>
+                        <tr>
+                            <th>Sr No.</th>
+                            <th>File Name</th>
+                            <th>Client / PMS</th>
+                            <th>Uploaded On</th>
+                            <th>Status</th>
+                            <th>Remark</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>POA_HDFC_Bank_12001.pdf</td>
+                            <td>HDFC Bank PMS</td>
+                            <td>25-Nov-2025</td>
+                            <td><span class="status-accepted">Accepted</span></td>
+                            <td>-</td>
+                            <td><a href="#" style="color:#1976d2;">View</a> | <a href="#" style="color:red;">Delete</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>POA_ICICI_89012.pdf</td>
+                            <td>ICICI Pru MF</td>
+                            <td>24-Nov-2025</td>
+                            <td><span class="status-accepted">Accepted</span></td>
+                            <td>-</td>
+                            <td><a href="#" style="color:#1976d2;">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
